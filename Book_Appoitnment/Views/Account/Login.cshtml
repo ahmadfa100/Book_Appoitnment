@@ -1,174 +1,148 @@
-﻿@{
-    Layout = null;
-    ViewBag.Title = "Login";
-}
-
-@model Book_Appoitnment.Models.LoginViewModel
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
     Layout = null;
-    ViewBag.Title = "Login";
-}
 
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/layout/background.css">
+    <link rel="stylesheet" href="/css/layout/components.css">
+    <link rel="stylesheet" href="/css/layout/utilities.css">
+    <link rel="stylesheet" href="/css/login.css">
 
-        body {
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .login-header {
-            background: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-            .login-header h2 {
-                font-size: 24px;
-            }
-
-        .login-body {
-            padding: 30px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-            .input-group i {
-                position: absolute;
-                left: 12px;
-                top: 50%;
-                transform: translateY(-50%);
-                color: #7f8c8d;
-            }
-
-            .input-group input {
-                width: 100%;
-                padding: 12px 15px 12px 40px;
-                border: 2px solid #e0e0e0;
-                border-radius: 6px;
-                font-size: 15px;
-                outline: none;
-                transition: border-color .3s, box-shadow .3s;
-            }
-
-                .input-group input:focus {
-                    border-color: #3498db;
-                    box-shadow: 0 0 0 3px rgba(52,152,219,0.2);
-                }
-
-        .checkbox-remember {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .login-actions {
-            text-align: center;
-        }
-
-        .login-btn {
-            background: linear-gradient(to right,#3498db,#2980b9);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform .3s;
-        }
-
-            .login-btn:hover {
-                transform: translateY(-2px);
-            }
-
-        .login-footer {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-            color: #7f8c8d;
-        }
-
-            .login-footer a {
-                color: #3498db;
-                text-decoration: none;
-            }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Patient Login | Book Appointment</title>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <h2><i class="fas fa-sign-in-alt"></i> Member Login</h2>
+    <div class="login-bg">
+        <!-- Background decoration -->
+        <div class="bg-decoration">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
         </div>
-        <div class="login-body">
-            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "loginForm" }))
-            {
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email address", @type = "email" })
+
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    @Html.PasswordFor(m => m.Password, new { @placeholder = "Password" })
+                <h2>Welcome Back!</h2>
+                <p>Login to book your appointment</p>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <i class="fas fa-envelope input-icon"></i>
+                    </div>
                 </div>
-                <div class="checkbox-remember">
-                    @Html.CheckBoxFor(m => m.RememberMe, new { @id = "rememberMe" })
-                    <label for="rememberMe">Remember me</label>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="input-wrapper password-wrapper">
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <i class="fas fa-lock input-icon"></i>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="login-actions">
-                    <button type="submit" class="login-btn">
-                        <i class="fas fa-sign-in-alt"></i> Log In
-                    </button>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
                 </div>
-            }
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <span class="btn-text">Sign In</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+
+                <button type="button" class="register-btn" onclick="window.location.href='register.html'">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Create New Account</span>
+                </button>
+            </form>
+
             <div class="login-footer">
-                <p>
-                    <a href="@Url.Action("ForgotPassword", "Account")">Forgot password?</a><br />
-                    <a href="@Url.Action("Register", "Account")">Create a new account</a>
-                </p>
+                <p>By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
             </div>
         </div>
     </div>
 
     <script>
-        // simple client‑side form validation
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.className = 'fas fa-eye';
+            }
+        }
+
+        // Form submission handling
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-          var email = this.querySelector('input[type="email"]').value.trim();
-          var pw    = this.querySelector('input[type="password"]').value;
-          if (!email || !pw) {
             e.preventDefault();
-            alert('Please enter both email and password.');
-          }
+
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = loginBtn.querySelector('.btn-text');
+            const btnIcon = loginBtn.querySelector('.btn-icon');
+
+            // Show loading state
+            loginBtn.classList.add('loading');
+            btnText.textContent = 'Signing In...';
+            btnIcon.className = 'fas fa-spinner fa-spin';
+
+            // Simulate login process (replace with actual login logic)
+            setTimeout(() => {
+                loginBtn.classList.remove('loading');
+                btnText.textContent = 'Sign In';
+                btnIcon.className = 'fas fa-arrow-right';
+
+                // Add success animation
+                loginBtn.classList.add('success');
+                setTimeout(() => loginBtn.classList.remove('success'), 1000);
+
+
+            }, 2000);
+        });
+
+        // Input focus effects
+        document.querySelectorAll('.input-wrapper input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
         });
     </script>
 </body>

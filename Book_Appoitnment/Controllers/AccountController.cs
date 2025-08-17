@@ -12,6 +12,13 @@ namespace Book_Appoitnment.Controllers
             return View(new LoginViewModel());
         }
 
+        //register
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -28,5 +35,17 @@ namespace Book_Appoitnment.Controllers
             return View(vm);
         }
 
+        //Register - post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(RegisterViewModel vm)
+        {
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            // TODO: create the user (save to DB, hash password, etc.)
+            // For now simulate success and redirect to Login (or to a "Welcome" page)
+            return RedirectToAction("Login");
+        }
     }
 }
